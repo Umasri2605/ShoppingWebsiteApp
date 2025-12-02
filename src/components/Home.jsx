@@ -5,7 +5,7 @@ function Home() {
   return (
     <div className="home-box">
       <img
-        src="https://img.freepik.com/free-vector/online-shopping-concept-illustration_114360-1084.jpg"
+        src="https://discovertemplate.com/wp-content/uploads/2021/09/Shopping-E-Commerce-Animated-GIF-Icon-Pack_2.gif"
         alt="Shopping Banner"
         className="home-img"
       />

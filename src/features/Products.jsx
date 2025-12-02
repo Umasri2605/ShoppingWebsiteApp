@@ -8,10 +8,10 @@ function ProductsPage() {
   useEffect(() => {
     dispatch({ type: "FETCH_START" });
 
-    fetch("https://fakestoreapi.com/products")
+    fetch("https://dummyjson.com/products")
       .then((res) => res.json())
       .then((data) =>
-        dispatch({ type: "FETCH_SUCCESS", payload: data })
+        dispatch({ type: "FETCH_SUCCESS", payload: data.products })
       )
       .catch((err) =>
         dispatch({ type: "FETCH_ERROR", payload: err.message })
@@ -26,20 +26,40 @@ function ProductsPage() {
   if (loading) return <h2>Loading...</h2>;
 
   return (
-    <div className="container">
+    <div className="container mt-4">
+      <h2 className="text-center mb-4 text-primary fw-bold">Products</h2>
 
       <div className="row">
         {products.map((p) => (
-          <div className="col-3 p-3" key={p.id}>
-            <img src={p.image} width="150" height="150" />
-            <h5>{p.title.slice(0, 20)}</h5>
-            <p>Rs. {p.price}</p>
-            <button
-              className="btn btn-success"
-              onClick={() => addToCart(p)}
-            >
-              Add to Cart
-            </button>
+          <div
+            className="col-md-3 col-sm-6 mb-4 d-flex"
+            key={p.id}
+          >
+            <div className="card shadow-lg p-3 rounded-4 w-100">
+              <img
+                src={p.thumbnail}
+                className="card-img-top"
+                style={{ height: "160px", objectFit: "cover" }}
+                alt={p.title}
+              />
+
+              <div className="card-body">
+                <h5 className="card-title">{p.title.slice(0, 20)}</h5>
+                <p className="card-text text-success fw-bold">
+                  ₹ {p.price}
+                </p>
+                <p className="text-muted" style={{ fontSize: "0.9rem" }}>
+                  {p.category}
+                </p>
+
+                <button
+                  className="btn btn-primary w-100"
+                  onClick={() => addToCart(p)}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>
