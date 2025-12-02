@@ -28,7 +28,7 @@ function CartPage() {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-center text-primary fw-bold mb-4">Your Cart</h2>
+      <h2 className="text-center text-dark fw-bold mb-4">Your Cart</h2>
 
       {items.length === 0 ? (
         <h4 className="text-center text-danger">No items in cart</h4>
